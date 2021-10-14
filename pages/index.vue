@@ -17,5 +17,6 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  margin-bottom: 100px;
 }
 </style>

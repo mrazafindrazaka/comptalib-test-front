@@ -5,7 +5,7 @@
       <span v-if='show === true'>Hide</span>
       my team</h4>
     <b-row v-if='pokemons.length > 0 && show'>
-      <b-col v-for='(pokemon, index) in pokemons' :key='index' md='2'>
+      <b-col v-for='(pokemon, index) in pokemons' :key='index' md='2' class='pokemon' @click='removePokemon(index)'>
         <img :src='pokemon.sprites.front_default' :alt='pokemon.name'/><br/>
         <span>{{ pokemon.name }}</span>
       </b-col>
@@ -23,6 +23,11 @@ export default {
   },
   mounted() {
     this.pokemons = this.$store.state.team.list
+  },
+  methods: {
+    removePokemon(index) {
+      this.$store.commit('team/remove', index)
+    }
   }
 }
 </script>
@@ -47,5 +52,9 @@ h4 {
 img {
   width: 100px;
   aspect-ratio: 1;
+}
+.pokemon:hover {
+  cursor: pointer;
+  background-color: red;
 }
 </style>
